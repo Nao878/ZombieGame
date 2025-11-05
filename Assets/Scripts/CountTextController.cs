@@ -12,7 +12,7 @@ public class CountTextController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, -10);
+        rb.linearVelocity = new Vector2(0, -10);
         countLastText = GetComponent<TextMeshProUGUI>();
     }
 
@@ -22,7 +22,7 @@ public class CountTextController : MonoBehaviour
 
         if (count >= 5)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
 
         countLastText.text = TitleController.count.ToString("F0");

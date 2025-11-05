@@ -33,7 +33,7 @@ public class CharaController : MonoBehaviour
             moveCount++;
         }
 
-        rb.velocity = new Vector2(xDspeed, speed * 5 + yDspeed);
+        rb.linearVelocity = new Vector2(xDspeed, speed * 5 + yDspeed);
 
         if (moveCount >= 5)
         {
@@ -89,7 +89,7 @@ public class CharaController : MonoBehaviour
     {
         if (!clickCheck)
         {
-            charaFace.text = "(ÅMÅEÉ÷ÅEÅL)";
+            charaFace.text = "(ÔøΩMÔøΩEÔøΩ÷ÅEÔøΩL)";
         }
     }
 
@@ -97,7 +97,7 @@ public class CharaController : MonoBehaviour
     {   
         if (!clickCheck)
         {
-            charaFace.text = "(ÅLÅEÉ÷ÅEÅM)";
+            charaFace.text = "(ÔøΩLÔøΩEÔøΩ÷ÅEÔøΩM)";
         }
     }
 
@@ -105,7 +105,7 @@ public class CharaController : MonoBehaviour
     {
         if (gameStart)
         {
-            charaFace.text = "(;  ﬂÑtﬂ   )";
+            charaFace.text = "(;  ﬂÑtÔøΩ   )";
             clickCheck = true;
             fadeCheck = true;
             countObject = GameObject.Find("CountDownText");
@@ -118,7 +118,7 @@ public class CharaController : MonoBehaviour
 
     public void OnPointerClickZombie()
     {
-        charaFace.text = "(;  ﬂÑtﬂ   )";
+        charaFace.text = "(;  ﬂÑtÔøΩ   )";
         clickCheck = true;
         fadeCheck = true;
         zombieCheck = true;
