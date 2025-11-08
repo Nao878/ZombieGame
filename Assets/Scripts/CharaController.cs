@@ -51,7 +51,7 @@ public class CharaController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         TitleController.sePlay = true;
 
         if (collision.gameObject.tag == "Player")

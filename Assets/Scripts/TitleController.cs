@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using unityroom.Api;
 
 public class TitleController : MonoBehaviour
 {
     [SerializeField] private AudioSource a;
     [SerializeField] private AudioClip b;
-    public GameObject title,startButton,CharaPrefab,zombiePrefab,canvas,countObject,countLastObj;
-    public static bool sePlay,countCheck,timeOver = false;
-    private bool charaGenerate,audioOneShot = false;
-    public static float delta,count = 0;
+    public GameObject title, startButton, CharaPrefab, zombiePrefab, canvas, countObject, countLastObj;
+    public static bool sePlay, countCheck, timeOver = false;
+    private bool charaGenerate, audioOneShot = false;
+    public static float delta, count = 0;
     private int charaCount = 0;
     public TextMeshProUGUI countDownText;
+    private bool scoreSent = false;
 
     public void StartClick()
     {
@@ -24,6 +26,7 @@ public class TitleController : MonoBehaviour
         countObject.SetActive(true);
         countCheck = true;
         CharaController.gameStart = true;
+        scoreSent = false;
     }
 
     public void AudioClick()
@@ -38,6 +41,7 @@ public class TitleController : MonoBehaviour
         CharaController.fadeCheck = false;
         CharaController.zombieCheck = false;
         timeOver = false;
+        scoreSent = false;
     }
 
     void Update()
@@ -90,12 +94,18 @@ public class TitleController : MonoBehaviour
                 timeOver = true;
                 CharaController.clickCheck = true;
                 CharaController.fadeCheck = true;
-                //countObject = GameObject.Find("CountDownText");
                 countObject.SetActive(false);
                 countCheck = false;
                 count = 0;
                 CharaController.gameStart = false;
             }
+        }
+
+        // ゲームクリア時（30秒未満で終了）にスコア送信
+        if (CharaController.clickCheck && !scoreSent && count > 0 && count < 30)
+        {
+            UnityroomApiClient.Instance.SendScore(1, count, ScoreboardWriteMode.HighScoreDesc);
+            scoreSent = true;
         }
 
         if (CharaController.zombieCheck)
