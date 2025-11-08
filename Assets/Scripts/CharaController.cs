@@ -89,7 +89,7 @@ public class CharaController : MonoBehaviour
     {
         if (!clickCheck)
         {
-            charaFace.text = "(�M�E�ցE�L)";
+            charaFace.text = "(｀・ω・´)";
         }
     }
 
@@ -97,7 +97,7 @@ public class CharaController : MonoBehaviour
     {   
         if (!clickCheck)
         {
-            charaFace.text = "(�L�E�ցE�M)";
+            charaFace.text = "(´・ω・｀)";
         }
     }
 
@@ -105,7 +105,7 @@ public class CharaController : MonoBehaviour
     {
         if (gameStart)
         {
-            charaFace.text = "(;  ߄t�   )";
+            charaFace.text = "((; ﾟдﾟ  ))";
             clickCheck = true;
             fadeCheck = true;
             countObject = GameObject.Find("CountDownText");
@@ -118,7 +118,7 @@ public class CharaController : MonoBehaviour
 
     public void OnPointerClickZombie()
     {
-        charaFace.text = "(;  ߄t�   )";
+        charaFace.text = "((; ﾟдﾟ  ))";
         clickCheck = true;
         fadeCheck = true;
         zombieCheck = true;
